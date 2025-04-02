@@ -1,0 +1,154 @@
+import random
+from statistics import mean, median, mode
+
+#1)
+EDAD_USUARIO = 18
+edad = input("Escriba su edad: ")
+
+if edad > EDAD_USUARIO:
+    print("Es mayor de edad")
+
+#2)
+nota = input("Escriba su nota: ")
+
+if nota >= 6:
+    print("Aprobado")
+else:
+    print("Desaprobado")
+
+#3)
+numero = int(input("Ingrese un número: "))
+
+if numero % 2 == 0:
+    print("Ha ingresado un número par")
+else:
+    print("Por favor, ingrese un número par")
+
+#4)
+edad = int(input("Por favor, ingresa tu edad: "))
+
+if edad < 12:
+    print("Eres un(a) Niño/a")
+elif 12 <= edad < 18:
+    print("Eres un(a) Adolescente")
+elif 18 <= edad < 30:
+    print("Eres un(a) Adulto/a joven")
+else:
+    print("Eres un(a) Adulto/a")
+
+#5)
+password = input("Ingrese una contraseña (8-14 caracteres): ")
+
+if 8 <= len(password) <= 14:
+    print("Ha ingresado una contraseña correcta")
+else:
+    print("Por favor, ingrese una contraseña de entre 8 y 14 caracteres")
+
+#6)
+# Generar una lista de 50 números aleatorios entre 1 y 100
+numeros_aleatorios = [random.randint(1, 100) for _ in range(50)]
+
+# Calcular la media, mediana y moda
+media = mean(numeros_aleatorios)
+mediana = median(numeros_aleatorios)
+moda = mode(numeros_aleatorios)
+
+# Comparar los valores para determinar el sesgo
+if media > mediana and mediana > moda:
+    print("Sesgo positivo o a la derecha")
+elif media < mediana and mediana < moda:
+    print("Sesgo negativo o a la izquierda")
+elif media == mediana and mediana == moda:
+    print("Sin sesgo")
+else:
+    print("No se cumple ninguno de los criterios de sesgo establecidos")
+
+#7)
+texto = input("Ingresa una frase o palabra: ")
+
+# Definir las vocales (incluyendo mayúsculas y minúsculas)
+vocales = "aeiouAEIOU"
+
+# Verificar si el string no está vacío y si termina con una vocal
+if texto and texto[-1] in vocales:
+    texto += "!"
+    print(texto)
+else: print(texto)
+
+
+#8)
+nombre = input("Ingresa tu nombre: ")
+
+# Solicitar la opción deseada al usuario
+print("Elige una opción:")
+print("1. Nombre en mayúsculas")
+print("2. Nombre en minúsculas")
+print("3. Nombre con la primera letra en mayúscula")
+opcion = input("Ingresa 1, 2 o 3: ")
+resultado = ""
+
+# Transformar el nombre según la opción seleccionada
+if opcion == "1":
+    resultado = nombre.upper()
+elif opcion == "2":
+    resultado = nombre.lower()
+elif opcion == "3":
+    resultado = nombre.title()
+else:
+    resultado = "Opción no válida. Por favor, ingresa 1, 2 o 3."
+
+print("Resultado:", resultado)
+
+#9)
+magnitud = float(input("Ingresa la magnitud del terremoto: "))
+
+# Clasificar la magnitud según la escala de Richter
+if magnitud < 3:
+    categoria = "Muy leve (imperceptible)"
+elif 3 <= magnitud < 4:
+    categoria = "Leve (ligeramente perceptible)"
+elif 4 <= magnitud < 5:
+    categoria = "Moderado (sentido por personas, pero generalmente no causa daños)"
+elif 5 <= magnitud < 6:
+    categoria = "Fuerte (puede causar daños en estructuras débiles)"
+elif 6 <= magnitud < 7:
+    categoria = "Muy Fuerte (puede causar daños significativos)"
+else:  # magnitud >= 7
+    categoria = "Extremo (puede causar graves daños a gran escala)"
+
+print("La categoría del terremoto es:", categoria)
+
+#10)
+hemisferio = input("¿En qué hemisferio te encuentras? (N/S): ").strip().upper()
+mes = int(input("Ingresa el número del mes (1-12): "))
+dia = int(input("Ingresa el día: "))
+estacion = ""
+
+# Periodo 1: 21 de diciembre - 20 de marzo
+if (mes == 12 and dia >= 21) or (mes in (1, 2)) or (mes == 3 and dia <= 20):
+    if hemisferio == "N":
+        estacion = "Invierno"
+    else:
+        estacion = "Verano"
+# Periodo 2: 21 de marzo - 20 de junio
+elif (mes == 3 and dia >= 21) or (mes in (4, 5)) or (mes == 6 and dia <= 20):
+    if hemisferio == "N":
+        estacion = "Primavera"
+    else:
+        estacion = "Otoño"
+# Periodo 3: 21 de junio - 20 de septiembre
+elif (mes == 6 and dia >= 21) or (mes in (7, 8)) or (mes == 9 and dia <= 20):
+    if hemisferio == "N":
+        estacion = "Verano"
+    else:
+        estacion = "Invierno"
+# Periodo 4: 21 de septiembre - 20 de diciembre
+elif (mes == 9 and dia >= 21) or (mes in (10, 11)) or (mes == 12 and dia <= 20):
+    if hemisferio == "N":
+        estacion = "Otoño"
+    else:
+        estacion = "Primavera"
+else:
+    estacion = "Fecha inválida"
+
+print(f"Según la fecha ingresada, te encuentras en la estación:{estacion}")
